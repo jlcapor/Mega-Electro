@@ -6,8 +6,7 @@ import { Toaster } from "sonner"
 import { cn } from "@/lib/utils"
 import { TRPCReactProvider } from "@/trpc/react";
 import { fontHeading, fontMono } from "@/lib/fonts";
-import { Modals } from "@/components/Modals/Modals";
-import Script from "next/script";
+import { ThemeProvider } from "@/components/providers";
 
 export const metadata = {
   title: "Create T3 App",
@@ -36,9 +35,14 @@ export default function RootLayout({
         fontMono.variable
     )}>
       <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
-        <Modals />
-        
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <TRPCReactProvider>{children}</TRPCReactProvider>
+        </ThemeProvider>
         <Toaster position="top-right" />
       </body>
     </html>

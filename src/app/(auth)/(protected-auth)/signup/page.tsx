@@ -9,7 +9,7 @@ export default function SignUpPage() {
     <Shell className="max-w-2xl"> 
       <Card>
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl">Sign up</CardTitle>
+          <CardTitle className="text-2xl">Crea una cuenta</CardTitle>
         </CardHeader>
         <CardContent>
           <SignUpForm />

@@ -10,7 +10,7 @@ import MainNav from "../layouts/MainNav"
 export function NavigationBar() {
   
   return (
-    <nav className="sticky top-0 z-50 mx-auto my-0 flex w-full flex-wrap content-center items-center justify-between border-b border-black bg-background py-6 md:border-y">
+    <nav className="sticky top-0 z-50 mx-auto my-0 flex w-full flex-wrap content-center items-center justify-between border-b bg-background py-6 md:border-y">
       <div className="flex justify-start px-4 md:mx-auto md:w-full md:px-0">
         <section className="flex w-full justify-between md:hidden">
           <Icons.menu className="size-6 mr-2 mt-2"/>
