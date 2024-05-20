@@ -1,14 +1,15 @@
-import { fontFamily } from "tailwindcss/defaultTheme"
-import type { Config } from "tailwindcss"
+import { fontFamily } from "tailwindcss/defaultTheme";
+import defaultTheme from "tailwindcss/defaultTheme";
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     transparent: "transparent",
@@ -122,13 +123,13 @@ const config = {
         transparent: "rgba(255, 255, 255, 0)",
         translucentWhite: "rgba(255, 255, 255, 80)",
         translucentDark: "rgba(25, 33, 58, 0.70)",
+        
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-
       boxShadow: {
         // light
         "tremor-input": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
@@ -169,9 +170,31 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      borderWidth: {
+        DEFAULT: "1px",
+        0: "0",
+        2: "2px",
+        3: "3px",
+        4: "4px",
+        6: "6px",
+        8: "8px",
+      },
+      minHeight: {
+        ...defaultTheme.height,
+      },
+      maxWidth: {
+        ...defaultTheme.width,
+        "container-lg": "1440px",
+        "container-md": "1280px",
+        "container-sm": "1024px",
+      },
+      minWidth: {
+        ...defaultTheme.width,
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  
+} satisfies Config;
 
-export default config
+export default config;

@@ -2,10 +2,12 @@ import "@/styles/globals.css";
 import { Inter as FontSans } from "next/font/google"
 import { GeistMono } from "geist/font/mono"
 import { GeistSans } from "geist/font/sans";
-
+import { Toaster } from "sonner"
 import { cn } from "@/lib/utils"
 import { TRPCReactProvider } from "@/trpc/react";
 import { fontHeading, fontMono } from "@/lib/fonts";
+import { Modals } from "@/components/Modals/Modals";
+import Script from "next/script";
 
 export const metadata = {
   title: "Create T3 App",
@@ -35,6 +37,9 @@ export default function RootLayout({
     )}>
       <body>
         <TRPCReactProvider>{children}</TRPCReactProvider>
+        <Modals />
+        
+        <Toaster position="top-right" />
       </body>
     </html>
   );

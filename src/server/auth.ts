@@ -5,7 +5,9 @@ import {
   type NextAuthOptions,
 } from "next-auth";
 import { type Adapter } from "next-auth/adapters";
+import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
+import bcrypt from "bcrypt";
 import { env } from "@/env";
 import { db } from "@/server/db";
 import { createTable } from "./db/utils";
@@ -43,8 +45,20 @@ export const authOptions: NextAuthOptions = {
       user: {
         ...session.user,
         id: user.id,
+        
       },
     }),
+
+    jwt: ({ token, user }) => {
+      if (user) {
+        const u = user;
+        return {
+          ...token,
+          id: u.id,
+        };
+      }
+      return token;
+    },
   },
   adapter: DrizzleAdapter(db, createTable) as Adapter,
   providers: [
@@ -52,6 +66,37 @@ export const authOptions: NextAuthOptions = {
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
     }),
+    CredentialsProvider({
+      name: "credentials",
+      credentials: {
+        email: { label: "email", type: "email", placeholder: "test@test.com" },
+        password: { label: "password", type: "password", placeholder: "password"},
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error("Email o Contraseña Inválido");
+        }
+
+        const user = await db.query.users.findFirst({
+          where: (users, { eq }) => eq(users.email, String(credentials.email)),
+        })
+
+        if (!user || !user.password) {
+          throw new Error("Email o Contraseña Inválido");
+        }
+
+        const isCorrectPassword = await bcrypt.compare(
+          credentials.password,
+          user.password,
+        );
+
+        if (!isCorrectPassword) {
+          throw new Error("Invalid credentials");
+        }
+        return user;
+      }
+
+    })
     /**
      * ...add more providers here.
      *
