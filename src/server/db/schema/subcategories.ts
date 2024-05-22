@@ -1,11 +1,10 @@
-import { index, text, timestamp, varchar } from "drizzle-orm/pg-core";
-import { createTable } from "../utils";
+import { index, pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { categories } from "./categories";
 import { relations, sql } from "drizzle-orm";
 import { dbPrefix } from "@/lib/constants";
 import { generateId } from "@/lib/id";
 
-export const subcategories = createTable(
+export const subcategories = pgTable(
   "subcategories",
   {
     id: varchar("id", { length: 30 })

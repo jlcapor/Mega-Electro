@@ -1,22 +1,25 @@
 "use client"
 
 import React from "react"
-import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
+import { signIn } from 'next-auth/react'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { PasswordInput } from "@/components/password-input"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { signinSchema } from "@/lib/validations/auth"
+import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 
 
 type Inputs = z.infer<typeof signinSchema>
 
 export default function SignInForm() {
-  const [loading, setLoading] = React.useState(false)
+  const router= useRouter()
+  const [isLoading, setIsLoading] = React.useState(false)
 
    // react-hook-form
    const form = useForm<Inputs>({
@@ -27,17 +30,24 @@ export default function SignInForm() {
     },
   })
 
-  async function onSubmit(data: Inputs) {
-    setLoading(true)
-    try {
-      
-    } catch (error) {
-      
+  const handleLogin = async (formData: Inputs) => { 
+    setIsLoading(true)
+    const callback = await signIn('credentials', {
+      ...formData,
+      redirect: false,
+    });
+    setIsLoading(false);
+    if (callback?.ok) {
+      router.push('/');
+      router.refresh();
+    }
+    if (callback?.error) {
+      toast.error(callback.error);
     }
   }
   return (
     <Form {...form}>
-      <form className="grid gap-4" onSubmit={form.handleSubmit(onSubmit)}>
+      <form className="grid gap-4" onSubmit={form.handleSubmit(handleLogin)}>
         <FormField
             control={form.control}
             name="email"
@@ -70,15 +80,19 @@ export default function SignInForm() {
           )}
         />
 
-        <Button type="submit" className="mt-2" disabled={loading}>
-          {loading && (
+        <Button
+          type="submit"
+          className="w-full"
+          disabled={isLoading}
+        >
+          {isLoading && (
             <Icons.spinner
               className="mr-2 size-4 animate-spin"
               aria-hidden="true"
             />
           )}
-            Iniciar sesión
-          <span className="sr-only">Iniciar sesión</span>
+          Iniciar Sesión
+          <span className="sr-only">Iniciar Sesión</span>
         </Button>
       </form>
     </Form>

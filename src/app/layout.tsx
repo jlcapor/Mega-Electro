@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import { TRPCReactProvider } from "@/trpc/react";
 import { fontHeading, fontMono } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/providers";
+import AuthProvider from "@/context/AuthProvider";
 
 export const metadata = {
   title: "Create T3 App",
@@ -25,26 +26,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" 
-    className={cn(
-      "min-h-screen bg-background font-sans antialiased",
-        GeistSans.variable,
-        GeistMono.variable,
-        fontHeading.variable,
-        fontSans.variable,
-        fontMono.variable
-    )}>
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <TRPCReactProvider>{children}</TRPCReactProvider>
-        </ThemeProvider>
-        <Toaster position="top-right" />
-      </body>
-    </html>
+    // <AuthProvider>
+      <html lang="en" 
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+            GeistSans.variable,
+            GeistMono.variable,
+            fontHeading.variable,
+            fontSans.variable,
+            fontMono.variable
+        )}>
+        <body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <TRPCReactProvider>{children}</TRPCReactProvider>
+          </ThemeProvider>
+          <Toaster position="top-right" />
+        </body>
+      </html>
+    // </AuthProvider>
   );
 }

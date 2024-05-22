@@ -5,7 +5,7 @@ import { Skeleton } from "../ui/skeleton"
 import { Icons } from "../icons"
 import { CartSheet } from "../Cart/CartSheet"
 import { Favorites } from "./Favorites"
-import MainNav from "../layouts/MainNav"
+import NavigationItem from "./NavigationItem"
 
 export function NavigationBar() {
   
@@ -13,7 +13,7 @@ export function NavigationBar() {
     <nav className="sticky top-0 z-50 mx-auto my-0 flex w-full flex-wrap content-center items-center justify-between border-b bg-background py-6 md:border-y">
       <div className="flex justify-start px-4 md:mx-auto md:w-full md:px-0">
         <section className="flex w-full justify-between md:hidden">
-          <Icons.menu className="size-6 mr-2 mt-2"/>
+          <Icons.menu className="h-7 w-7 mr-3 mt-1"/>
           <Link href="/" className="flex items-center text-xl font-bold">
             Acme
           </Link>
@@ -27,7 +27,7 @@ export function NavigationBar() {
         <section className="flex flex-1 items-center justify-end space-x-4">
           <div className="container flex items-center justify-center">
             <div className="mt-10 flex w-full flex-col gap-8 md:mt-0 md:w-auto md:flex-row md:items-center md:justify-start">
-              <MainNav/>
+              <NavigationItem/>
             </div>
               
             <div className="relative ml-auto flex items-center">

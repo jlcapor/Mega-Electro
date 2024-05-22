@@ -1,10 +1,9 @@
-import { timestamp, varchar } from "drizzle-orm/pg-core";
-import { createTable } from "../utils";
+import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { relations, sql } from "drizzle-orm";
 import { users } from "./users";
 import { generateId } from "@/lib/id";
 
-export const roles = createTable("roles", {
+export const roles = pgTable("roles", {
   id: varchar("id", { length: 30 })
   .$defaultFn(() => generateId())
   .primaryKey(),
@@ -13,9 +12,9 @@ export const roles = createTable("roles", {
   updatedAt: timestamp("updated_at").default(sql`current_timestamp`),
 });
 
-export const rolesRelations = relations(roles, ({ many }) => ({
-  users: many(users),
-}));
+// export const rolesRelations = relations(roles, ({ many }) => ({
+//   users: many(users),
+// }));
 
 
 export type Roles = typeof roles.$inferSelect;

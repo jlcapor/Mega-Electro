@@ -5,7 +5,7 @@ import MainNav from "../layouts/MainNav"
 
 export default function TopBar() {
   return (
-    <header className="hidden bg-background py-3 md:block">
+    <header className="hidden bg-background py-4 md:block">
       <div className="max-w-container-lg mx-auto flex items-center justify-between px-4">
         <Link prefetch={false} href="/" className="text-3xl font-bold">
             Acme

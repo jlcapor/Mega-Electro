@@ -1,9 +1,11 @@
-import { boolean, json, text, timestamp, varchar } from "drizzle-orm/pg-core";
-import { createTable } from "../utils";
+import { boolean, json, pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { type CartItemSchema } from "@/lib/validations/cart";
 import { sql } from "drizzle-orm";
-export const carts = createTable("carts", {
-  id: varchar("id", { length: 255 }).notNull().primaryKey(),
+import { generateId } from "@/lib/id";
+export const carts = pgTable("carts", {
+  id: varchar("id", { length: 30 })
+      .$defaultFn(() => generateId("cart"))
+      .primaryKey(),
   paymentIntentId: text("payment_intent_id"),
   clientSecret: text("client_secret"),
   items: json("items").$type<CartItemSchema[] | null>().default(null),

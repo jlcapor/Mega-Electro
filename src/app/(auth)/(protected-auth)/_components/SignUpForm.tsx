@@ -1,19 +1,25 @@
 "use client"
+import React from 'react';
 import { Icons } from '@/components/icons'
 import { PasswordInput } from '@/components/password-input'
 import { Button } from '@/components/ui/button'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { 
+  Form, 
+  FormControl, 
+  FormField, 
+  FormItem, 
+  FormLabel, 
+  FormMessage 
+} from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { signupSchema } from '@/lib/validations/auth'
-import { api } from "@/trpc/react";
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { toast } from 'sonner'
 import { z } from 'zod'
 
 type Inputs = z.infer<typeof signupSchema>
 export default function SignUpForm() {
-
+  const [isLoading, setIsLoading] = React.useState(false)
   const form = useForm<Inputs>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
@@ -26,23 +32,11 @@ export default function SignUpForm() {
   })
   const { handleSubmit, reset } = form
 
-  const createUser = api.auth.create.useMutation({
-    onSuccess: () => {
-      reset();
-      toast.success("Usuario creada con éxito!")
-    },
-    onError: (error) => {
-      toast.error(error.message)
-    }
-  });
+  
 
   async function onSubmit(data: Inputs) {
-    createUser.mutate({
-      name: data.name,
-      email: data.email,
-      password: data.password,
-      role: data.role
-    })
+    const { name, email, password } = data
+    
   }
   return (
     <Form {...form}>
@@ -58,7 +52,6 @@ export default function SignUpForm() {
                     type="text"
                     placeholder="Nombres y apellidos"
                     {...field}
-                    
                   />
                 </FormControl>
                 <FormMessage />
@@ -109,15 +102,15 @@ export default function SignUpForm() {
             )}
           />
 
-        <Button className="mt-2" disabled={createUser.isPending}>
-          {createUser.isPending && (
+        <Button className="mt-2" disabled={isLoading}>
+          {isLoading && (
             <Icons.spinner
               className="mr-2 size-4 animate-spin"
               aria-hidden="true"
             />
           )}
-            Registrarme
-            <span className="sr-only">Continue to email verification page</span>
+          Registrarme
+          <span className="sr-only">Continue to email verification page</span>
         </Button>
        </form>
     </Form>

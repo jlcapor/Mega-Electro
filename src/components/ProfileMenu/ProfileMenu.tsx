@@ -1,7 +1,10 @@
 "use client"
+import dynamic from 'next/dynamic'
 import { Skeleton } from '../ui/skeleton'
 import AuthActions from './AuthActions'
-import ProfileBar from './AuthDropdown'
+// import ProfileBar from './AuthDropdown'
+
+const ProfileBar = dynamic(() => import("./AuthDropdown"), { ssr: false, loading: ActionsSkeleton })
 
 export default function ProfileMenu() {
   return (

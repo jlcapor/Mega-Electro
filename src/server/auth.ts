@@ -10,8 +10,8 @@ import GoogleProvider from "next-auth/providers/google";
 import bcrypt from "bcrypt";
 import { env } from "@/env";
 import { db } from "@/server/db";
-import { createTable } from "./db/utils";
-
+import { createTable } from "@/server/db/schema";
+///https://javascript.plainenglish.io/authentication-and-next-js-with-next-auth-credentials-roles-082c7783c869
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
  * object and keep type safety.
@@ -45,10 +45,8 @@ export const authOptions: NextAuthOptions = {
       user: {
         ...session.user,
         id: user.id,
-        
       },
     }),
-
     jwt: ({ token, user }) => {
       if (user) {
         const u = user;
@@ -70,7 +68,11 @@ export const authOptions: NextAuthOptions = {
       name: "credentials",
       credentials: {
         email: { label: "email", type: "email", placeholder: "test@test.com" },
-        password: { label: "password", type: "password", placeholder: "password"},
+        password: {
+          label: "password",
+          type: "password",
+          placeholder: "password",
+        },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
@@ -79,7 +81,7 @@ export const authOptions: NextAuthOptions = {
 
         const user = await db.query.users.findFirst({
           where: (users, { eq }) => eq(users.email, String(credentials.email)),
-        })
+        });
 
         if (!user || !user.password) {
           throw new Error("Email o Contraseña Inválido");
@@ -94,9 +96,8 @@ export const authOptions: NextAuthOptions = {
           throw new Error("Invalid credentials");
         }
         return user;
-      }
-
-    })
+      },
+    }),
     /**
      * ...add more providers here.
      *
