@@ -1,4 +1,41 @@
-import { CartItemSchema } from "@/lib/validations/cart";
+import type { CartItemSchema } from "@/lib/validations/cart";
+
+
+export interface NavItem {
+  title: string
+  href?: string
+  active?: boolean
+  disabled?: boolean
+  external?: boolean
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  label?: string
+};
+
+
+export interface NavItemWithChildren extends NavItem {
+  items: NavItemWithChildren[]
+}
+
+export interface NavItemWithOptionalChildren extends NavItem {
+  items?: NavItemWithChildren[];
+}
+
+
+export interface FooterItem {
+  title: string;
+  items: {
+    title: string;
+    href: string;
+    external?: boolean;
+  }[];
+}
+
+export type MainNavItem = NavItemWithOptionalChildren;
+
+export type SidebarNavItem = NavItemWithChildren;
+
+
+
 
 export interface StoredFile {
   id: string
@@ -16,6 +53,9 @@ export interface CartItem {
   createdAt: Date;
   updatedAt: Date;
 }
+
+
+
 
 
 

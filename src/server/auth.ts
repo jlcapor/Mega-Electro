@@ -11,7 +11,7 @@ import bcrypt from "bcrypt";
 import { env } from "@/env";
 import { db } from "@/server/db";
 import { createTable } from "@/server/db/schema";
-///https://javascript.plainenglish.io/authentication-and-next-js-with-next-auth-credentials-roles-082c7783c869
+
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
  * object and keep type safety.

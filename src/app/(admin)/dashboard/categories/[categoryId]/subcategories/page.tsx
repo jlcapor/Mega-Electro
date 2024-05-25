@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function SidebarNav() {
+export default function SubcategoriesPage() {
   return (
     <div>
       

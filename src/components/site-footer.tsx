@@ -1,5 +1,5 @@
 import React from 'react'
-import { Shell } from '../shell'
+import { Shell } from './shell'
 import { ModeToggle } from './mode-toggle'
 
 export default function SiteFooter() {

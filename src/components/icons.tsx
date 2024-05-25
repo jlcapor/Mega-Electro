@@ -1,10 +1,12 @@
 import {
-    AvatarIcon,
-    DashboardIcon,
-    GearIcon,
-    ImageIcon,
-    MagnifyingGlassIcon
-  } from "@radix-ui/react-icons"
+  LayoutDashboard,
+  Package,
+  ShoppingCart,
+  BarChartBig,
+  GitFork, 
+  AlignVerticalJustifyEnd
+} from "lucide-react"
+
 
   export type IconProps = React.HTMLAttributes<SVGElement>
 
@@ -137,9 +139,10 @@ import {
         />
       </svg>
     ),
-    dashboard: DashboardIcon,
-    avatar: AvatarIcon,
-    placeholder: ImageIcon,
-    settings: GearIcon,
-    search: MagnifyingGlassIcon
+    dashboard: LayoutDashboard,
+    product: Package,
+    analytics: BarChartBig,
+    order: ShoppingCart,
+    category: GitFork,
+    subcategories: AlignVerticalJustifyEnd
   }

@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils"
 import { TRPCReactProvider } from "@/trpc/react";
 import { fontHeading, fontMono } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/providers";
-import AuthProvider from "@/context/AuthProvider";
 
 export const metadata = {
   title: "Create T3 App",

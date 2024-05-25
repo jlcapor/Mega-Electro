@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function ProductsPage() {
+export default function page() {
   return (
     <div>
-      JKHJKHJHJK
+      
     </div>
   )
 }

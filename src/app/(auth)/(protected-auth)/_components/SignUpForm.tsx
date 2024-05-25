@@ -15,7 +15,7 @@ import { Input } from '@/components/ui/input'
 import { signupSchema } from '@/lib/validations/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+import type { z } from 'zod'
 
 type Inputs = z.infer<typeof signupSchema>
 export default function SignUpForm() {
@@ -30,12 +30,11 @@ export default function SignUpForm() {
       role: 'USER'
     }
   })
-  const { handleSubmit, reset } = form
+  const { handleSubmit } = form
 
   
 
   async function onSubmit(data: Inputs) {
-    const { name, email, password } = data
     
   }
   return (

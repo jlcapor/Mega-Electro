@@ -9,7 +9,7 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 import { relations, sql } from "drizzle-orm";
-import { StoredFile } from "@/types";
+import type { StoredFile } from "@/types";
 import { subcategories } from "./subcategories";
 import { dbPrefix } from "@/lib/constants";
 import { categories } from "./categories";

@@ -11,7 +11,7 @@ import {
   type CartLineItemSchema,
 } from "@/lib/validations/cart";
 import { and, desc, eq, inArray } from "drizzle-orm";
-import { z } from "zod";
+import type { z } from "zod";
 
 export async function getCart(): Promise<CartLineItemSchema[]> {
   noStore();

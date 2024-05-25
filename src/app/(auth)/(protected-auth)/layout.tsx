@@ -4,7 +4,6 @@ export default async function ProtectedAuthLayout({
   children,
 }: React.PropsWithChildren) {
   const user = await getCurrentUser()
-  console.log(user)
   if (user) {
     redirect("/")
   }

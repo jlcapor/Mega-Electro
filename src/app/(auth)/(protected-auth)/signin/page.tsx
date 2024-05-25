@@ -2,14 +2,10 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import SignInForm from "../_components/SignInForm";
 import { Shell } from "@/components/shell";
 import Link from "next/link";
-import getCurrentUser from "@/lib/queries/getCurrentUser";
 
 //iniciar sesión
 export default async function SigninPage() {
-  const user = await getCurrentUser();
-  if (user) {
-
-  }
+  
   return (
     <Shell className="max-w-xl">
       <Card>
