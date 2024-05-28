@@ -25,6 +25,13 @@ const config = {
       screens: {
         xs: "480px",
         xxs: "380px",
+        "2xsmall": "320px",
+        xsmall: "512px",
+        small: "1024px",
+        medium: "1280px",
+        large: "1440px",
+        xlarge: "1680px",
+        "2xlarge": "1920px",
       },
       colors: {
         border: "hsl(var(--border))",

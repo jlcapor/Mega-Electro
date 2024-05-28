@@ -1,4 +1,4 @@
-"use client"
+
 import Link from "next/link"
 import { DashboardIcon, ExitIcon, GearIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
@@ -52,7 +52,7 @@ export function AuthDropdown({ user }: AuthDropdownProps) {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem asChild>
-                <Link href="/dashboard">
+                <Link href="/dashboard/users">
                   <DashboardIcon className="mr-2 size-4" aria-hidden="true" />
                     Dashboard
                   <DropdownMenuShortcut>⌘D</DropdownMenuShortcut>

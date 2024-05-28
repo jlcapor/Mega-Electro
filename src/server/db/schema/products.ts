@@ -19,7 +19,7 @@ export const products = pgTable(
   "products",
   {
     id: varchar("id", { length: 30 })
-      .$defaultFn(() => generateId())
+      .$defaultFn(() => generateId("product"))
       .primaryKey(),
     name: varchar("name", { length: 255 }).notNull(),
     description: text("description"),

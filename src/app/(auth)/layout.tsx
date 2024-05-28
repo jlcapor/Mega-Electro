@@ -17,7 +17,7 @@ export default async function AuthLayout({ children }: AuthLayoutProps) {
         email: user?.email,
       }}/>
       <NavigationBar/>
-      <section className="flex items-center justify-center my-6">
+      <section className="flex min-h-screen flex-col justify-center py-12 sm:px-6 lg:px-8">
         {children}
       </section>
       <SiteFooter/>

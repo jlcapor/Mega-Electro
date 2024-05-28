@@ -1,9 +1,27 @@
-import React from 'react'
+import { Shell } from "@/components/shell"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { env } from "@/env"
+import { PlusIcon } from "lucide-react"
+import { Metadata } from "next"
+import Link from "next/link"
 
+
+export const metadata: Metadata = {
+  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
+  title: "Products",
+  description: "Manage your products",
+}
 export default function ProductsPage() {
   return (
-    <div>
-      JKHJKHJHJK
+    <div className="space-y-6">
+      <div className="flex flex-col gap-4 xs:flex-row xs:items-center xs:justify-between">
+        <h2 className="text-2xl font-bold tracking-tight">Products</h2>
+        <Button>
+          XCXCV
+        </Button>
+      </div>
+      <Card></Card>
     </div>
   )
 }

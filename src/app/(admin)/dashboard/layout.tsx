@@ -1,9 +1,9 @@
 import { redirect } from 'next/navigation';
 import { DashboardHeader } from './_components/dashboard-header'
-import { DashboardSidebar } from './_components/dashboard-sidebar'
-import SiteFooter from '@/components/site-footer'
 import { getCurrentUser } from '@/lib/session'
 import { SidebarProvider } from '@/context/sidebar-context';
+import { DashboardSidebar } from './_components/dashboard-sidebar';
+import SiteFooter from '@/components/site-footer';
 
 
 export default async function DashboardLayout({
@@ -17,10 +17,10 @@ export default async function DashboardLayout({
   return (
     <SidebarProvider>
       <div className="flex min-h-screen flex-col space-y-6">
-        <DashboardHeader user={user}/>
-        <div className="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
+        <DashboardHeader user={user} />
+        <div className="container flex flex-1 gap-12">
           <DashboardSidebar/>
-          <main className="flex w-full flex-1 flex-col overflow-hidden space-y-4 pt-6">
+          <main className="flex-1 space-y-4 pt-12">
             {children}
           </main>
         </div>

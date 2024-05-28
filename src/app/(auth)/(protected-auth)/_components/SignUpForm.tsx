@@ -35,6 +35,8 @@ export default function SignUpForm() {
   
 
   async function onSubmit(data: Inputs) {
+    const { name, email, password } = data;
+    setIsLoading(true)
     
   }
   return (
