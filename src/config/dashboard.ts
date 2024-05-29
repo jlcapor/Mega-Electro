@@ -12,31 +12,26 @@ export const dashboardConfig: DashboardConfig = {
       title: "Usuarios",
       href: "/dashboard/users",
       icon: Icons.user,
-      items: [],
     },
     {
       title: "Productos",
       href: "/dashboard/products",
       icon: Icons.product,
-      items: [],
     },
     {
       title: "Categorias",
       href: "/dashboard/categories",
       icon: Icons.category,
-      items: [],
     },
     {
       title: "Orders",
       href: "/dashboard/orders",
       icon: Icons.order,
-      items: [],
     },
     {
       title: "Analytics",
       href: "/dashboard/analytics",
       icon: Icons.analytics,
-      items: [],
     },
   ],
 };

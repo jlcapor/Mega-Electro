@@ -6,7 +6,8 @@ import {
   GitFork, 
   AlignVerticalJustifyEnd,
   Store,
-  ImageIcon
+  ImageIcon,
+  ChevronLeft,
 } from "lucide-react"
 
 
@@ -168,4 +169,5 @@ import {
     subcategories: AlignVerticalJustifyEnd,
     store: Store,
     placeholder: ImageIcon,
+    chevronLeft: ChevronLeft,
   }

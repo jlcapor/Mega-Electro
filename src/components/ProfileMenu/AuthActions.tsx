@@ -11,12 +11,6 @@ export default function AuthActions() {
           <span className="sr-only">Iniciar sesión</span>
         </Link>
       </Button>
-      <Button size="sm" variant="outline">
-        <Link href="/signup">
-          Registrarse
-          <span className="sr-only">Registrarse</span>
-        </Link>
-      </Button>
     </div>
   )
 }

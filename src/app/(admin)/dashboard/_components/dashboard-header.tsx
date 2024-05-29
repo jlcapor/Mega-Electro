@@ -3,16 +3,17 @@
 import { LaptopMinimal } from "lucide-react"
 import Link from "next/link"
 import { DashboardSidebarSheet } from "./dashboard-sidebar-sheet"
-import { User } from "next-auth"
 import { AuthDropdown } from "@/components/ProfileMenu/AuthDropdown"
 import { dashboardConfig } from "@/config/dashboard"
+import { Session } from "next-auth"
 
 
 interface DashboardHeaderProps {
-  user: Pick<User, "name" | "image" | "email">
+  // user: Pick<User, "id" | "name" | "image" | "email">
+  session: Session | null
 }
 
-export function DashboardHeader({ user }: DashboardHeaderProps) {
+export function DashboardHeader({ session }: DashboardHeaderProps) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex h-16 items-center px-4 md:px-8">
@@ -35,7 +36,7 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
             />
           </Suspense> */}
           <div className="ml-auto flex items-center space-x-4">
-            <AuthDropdown user={user}/>
+            <AuthDropdown session={session}/>
           </div>
       </div>
     </header>
