@@ -1,8 +1,7 @@
 "use client"
-import { Skeleton } from '../ui/skeleton'
 import AuthActions from './AuthActions'
 import { AuthDropdown } from './AuthDropdown'
-import { Session } from 'next-auth'
+import type { Session } from 'next-auth'
 
 // const ProfileBar = dynamic(() => import("./AuthDropdown"), { ssr: false, loading: ActionsSkeleton })
 interface ProfileMenuProps  {
@@ -23,6 +22,3 @@ export default function ProfileMenu({ session }: ProfileMenuProps) {
   )
 }
 
-function ActionsSkeleton() {
-  return <Skeleton className="h-[35px] w-[250px]" />
-}

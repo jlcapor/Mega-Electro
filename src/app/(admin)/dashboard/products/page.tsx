@@ -1,10 +1,7 @@
-import { Shell } from "@/components/shell"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { env } from "@/env"
-import { PlusIcon } from "lucide-react"
-import { Metadata } from "next"
-import Link from "next/link"
+import type { Metadata } from "next"
 
 
 export const metadata: Metadata = {

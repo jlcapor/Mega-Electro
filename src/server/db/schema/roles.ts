@@ -1,6 +1,5 @@
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
-import { relations, sql } from "drizzle-orm";
-import { users } from "./users";
+import { sql } from "drizzle-orm";
 import { generateId } from "@/lib/id";
 
 export const roles = pgTable("roles", {

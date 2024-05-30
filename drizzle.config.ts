@@ -12,4 +12,4 @@ export default {
   },
   tablesFilter: [`${dbPrefix}_*`],  
 } satisfies Config;
-//npm install divz
+//npm install divz https://cursos.devtalles.com/courses/take/shadcn-ui/lessons/55102704-button

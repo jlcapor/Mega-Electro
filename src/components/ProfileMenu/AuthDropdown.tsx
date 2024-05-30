@@ -1,6 +1,6 @@
 
 import Link from "next/link"
-import { DashboardIcon, ExitIcon, GearIcon } from "@radix-ui/react-icons"
+import { DashboardIcon, ExitIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -15,7 +15,7 @@ import {
 import { cn } from "@/lib/utils"
 import { signOut } from "next-auth/react"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
-import { Session } from "next-auth"
+import type { Session } from "next-auth"
 import { Icons } from "../icons"
 
 interface AuthDropdownProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -74,7 +74,7 @@ export function AuthDropdown({ session }: AuthDropdownProps) {
                 className="cursor-pointer"
                   onSelect={(event) => {
                     event.preventDefault()
-                    signOut({
+                    void signOut({
                       callbackUrl: `${window.location.origin}/signin`,
                     })
                   }}

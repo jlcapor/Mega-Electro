@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { DashboardHeader } from './_components/dashboard-header'
-import { getCurrentUser, getSession } from '@/lib/session'
+import { getSession } from '@/lib/session'
 import { SidebarProvider } from '@/context/sidebar-context';
 import { DashboardSidebar } from './_components/dashboard-sidebar';
 import SiteFooter from '@/components/site-footer';

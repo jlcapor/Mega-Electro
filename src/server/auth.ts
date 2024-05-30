@@ -83,7 +83,7 @@ export const authOptions: NextAuthOptions = {
           where: (users, { eq }) => eq(users.email, String(credentials.email)),
         });
 
-        if (!user || !user.password) {
+        if (!user?.email || !user.password) {
           throw new Error("Email o Contraseña Inválido");
         }
 

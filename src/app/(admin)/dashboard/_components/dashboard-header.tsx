@@ -5,7 +5,7 @@ import Link from "next/link"
 import { DashboardSidebarSheet } from "./dashboard-sidebar-sheet"
 import { AuthDropdown } from "@/components/ProfileMenu/AuthDropdown"
 import { dashboardConfig } from "@/config/dashboard"
-import { Session } from "next-auth"
+import type { Session } from "next-auth"
 
 
 interface DashboardHeaderProps {

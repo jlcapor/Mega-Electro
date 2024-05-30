@@ -1,7 +1,7 @@
 import Link from "next/link"
 import React from 'react'
 import ProfileMenu from "../ProfileMenu/ProfileMenu"
-import { Session } from "next-auth"
+import type { Session } from "next-auth"
 interface TopBarProps  {
   // user: Pick<User, "name" | "image" | "email">
   session: Session | null

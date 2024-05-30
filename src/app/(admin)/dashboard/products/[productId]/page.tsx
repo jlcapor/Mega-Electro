@@ -5,9 +5,10 @@ interface UpdateProductPageProps {
 }
 
 export default async function UpdateProductPage({ params } : UpdateProductPageProps) {
+  const { productId } = params
   return (
     <div>
-        
+        {productId}
     </div>
   )
 }

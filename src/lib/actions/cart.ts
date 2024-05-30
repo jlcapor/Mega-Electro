@@ -5,9 +5,9 @@ import { cookies } from "next/headers";
 import { db } from "@/server/db";
 import { carts, categories, products, subcategories } from "@/server/db/schema";
 
-import {
+import  {
   cartItemSchema,
-  deleteCartItemSchema,
+  type deleteCartItemSchema,
   type CartLineItemSchema,
 } from "@/lib/validations/cart";
 import { and, desc, eq, inArray } from "drizzle-orm";
@@ -116,10 +116,9 @@ export async function updateCartItem(rawInput: z.infer<typeof cartItemSchema>) {
       data: cart.items,
       error: null,
     };
-  } catch (err: any) {
+  } catch (err) {
     return {
       data: null,
-      error: err.message,
     };
   }
 }
@@ -153,10 +152,9 @@ export async function deleteCartItem(
       .where(eq(carts.id, cartId));
 
     revalidatePath("/");
-  } catch (err: any) {
+  } catch (err) {
     return {
       data: null,
-      error: err.message,
     };
   }
 }

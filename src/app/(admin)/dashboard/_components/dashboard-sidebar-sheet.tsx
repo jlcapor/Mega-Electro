@@ -13,7 +13,7 @@ import { Icons } from "@/components/icons"
 import { useSidebar } from "@/hooks/use-sidebar"
 import { ChevronLeftIcon, LaptopMinimalIcon } from "lucide-react"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { SidebarNavItem } from "@/types"
+import type { SidebarNavItem } from "@/types"
 import { useSelectedLayoutSegments } from "next/navigation"
 import { cn } from "@/lib/utils"
 
